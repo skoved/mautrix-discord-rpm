@@ -10,3 +10,24 @@ diff -urN discordgo-0.27.0-orig/restapi.go discordgo-0.27.0/restapi.go
  			err = ErrUnauthorized
  		}
  		fallthrough
+diff -urN discordgo-0.27.0-orig/restapi_test.go discordgo-0.27.0/restapi_test.go
+--- discordgo-0.27.0-orig/restapi_test.go	2023-01-17 18:08:41.000000000 -0500
++++ discordgo-0.27.0/restapi_test.go	2025-06-05 12:16:16.886649096 -0400
+@@ -93,7 +93,7 @@
+ 
+ 	_, err := dg.UserChannelCreate(envAdmin)
+ 	if err != nil {
+-		t.Errorf(err.Error())
++		t.Error(err.Error())
+ 	}
+ 
+ 	// TODO make sure the channel was added
+@@ -106,7 +106,7 @@
+ 
+ 	_, err := dg.UserGuilds(10, "", "")
+ 	if err != nil {
+-		t.Errorf(err.Error())
++		t.Error(err.Error())
+ 	}
+ }
+ 
