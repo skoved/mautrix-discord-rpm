@@ -47,6 +47,8 @@ Source:         %{gosource}
 %prep
 %goprep -A
 %autopatch -p1
+# we don't need to package the examples
+rm -r examples
 
 %if %{without bootstrap}
 %generate_buildrequires
