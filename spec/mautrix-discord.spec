@@ -11,9 +11,13 @@
 %endif
 
 # https://github.com/mautrix/discord
-%global goipath         github.com/mautrix/discord
+%global goipath         go.mau.fi/mautrix-discord
+%global forgeurl        https://github.com/mautrix/discord
 Version:                0.7.3
 %global tag             v0.7.3
+%global commit          001c88c
+
+%global buildtime       %(date '+%%b %%_d %%Y, %%H:%%M:%%S')
 
 # REMOVE BEFORE SUBMITTING THIS FOR REVIEW
 # ---
@@ -34,7 +38,7 @@ A Matrix-Discord puppeting bridge based on discordgo.}
 %global godocs          CHANGELOG.md README.md ROADMAP.md\\\
                         remoteauth/README.md
 
-Name:           golang-github-mautrix-discord
+Name:           mautrix-discord
 Release:        %autorelease
 Summary:        A Matrix-Discord puppeting bridge
 
@@ -57,7 +61,8 @@ Source:         %{gosource}
 
 %if %{without bootstrap}
 %build
-%gobuild -o %{gobuilddir}/bin/discord %{goipath}
+export LDFLAGS="-X main.Tag=%{name} -X main.Commit=%{commit} -X 'main.BuildTime=%{buildtime}'"
+%gobuild -o %{gobuilddir}/bin/%{name} %{goipath}
 %endif
 
 %install
@@ -79,9 +84,9 @@ install -m 0644 -vp example-config.yaml %{buildroot}%{_pkgdocdir}/
 %if %{without bootstrap}
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md ROADMAP.md remoteauth/README.md
-%{_bindir}/discord
-%{_pkgdocdir}/example-config.yaml
+%dir %{_pkgdocdir}
+%doc CHANGELOG.md README.md ROADMAP.md remoteauth/README.md %{_pkgdocdir}/example-config.yaml
+%{_bindir}/%{name}
 %endif
 
 %gopkgfiles
