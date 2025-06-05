@@ -46,6 +46,10 @@ License:        AGPL-3.0-only
 URL:            %{gourl}
 Source:         %{gosource}
 
+Requires:       pkgconfig(libolm)
+BuildRequires:  pkgconfig(libolm)
+BuildRequires:  pkgconfig(libolm-devel)
+
 %description %{common_description}
 
 %gopkg
