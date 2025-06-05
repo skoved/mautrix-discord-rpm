@@ -62,7 +62,7 @@ rm -r examples
 %if %{with check}
 %check
 # restapi_test.go: non-constant format string in call
-%gocheck -r "*restapi_test.go"
+%gocheck -r ".*restapi.*"
 %endif
 %endif
 
