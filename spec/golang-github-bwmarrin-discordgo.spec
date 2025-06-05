@@ -49,6 +49,8 @@ Source:         %{gosource}
 %autopatch -p1
 # we don't need to package the examples
 rm -r examples
+# restapi_test.go: non-constant format string in call
+rm restapi_test.go
 
 %if %{without bootstrap}
 %generate_buildrequires
@@ -61,8 +63,7 @@ rm -r examples
 %if %{without bootstrap}
 %if %{with check}
 %check
-# restapi_test.go: non-constant format string in call
-%gocheck -r ".*restapi.*"
+%gocheck
 %endif
 %endif
 
