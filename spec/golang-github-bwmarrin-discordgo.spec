@@ -61,7 +61,8 @@ rm -r examples
 %if %{without bootstrap}
 %if %{with check}
 %check
-%gocheck
+# restapi_test.go: non-constant format string in call
+%gocheck -r "*restapi_test.go"
 %endif
 %endif
 
