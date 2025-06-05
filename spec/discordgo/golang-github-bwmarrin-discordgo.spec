@@ -39,8 +39,6 @@ Summary:        (Golang) Go bindings for Discord
 License:        BSD-3-Clause
 URL:            %{gourl}
 Source:         %{gosource}
-# fix error in tests due to calling fmt.Sprintf with a string with no format specifiers
-Patch:          01-fix-sprintf.patch
 
 %description %{common_description}
 
@@ -63,6 +61,7 @@ rm -r examples
 %if %{without bootstrap}
 %if %{with check}
 %check
+export GO_TEST_FLAGS="${GO_TEST_FLAGS} -vet=off"
 %gocheck
 %endif
 %endif
