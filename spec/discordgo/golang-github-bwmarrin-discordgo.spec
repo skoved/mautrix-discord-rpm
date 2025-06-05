@@ -40,6 +40,10 @@ License:        BSD-3-Clause
 URL:            %{gourl}
 Source:         %{gosource}
 # add format string to restapi.go:299 to make go vet's printf analyzer happy during testing
+# See:
+# https://github.com/bwmarrin/discordgo/issues/1630
+# and
+# https://github.com/bwmarrin/discordgo/pull/1631
 Patch:          01-fix-sprintf.patch
 
 %description %{common_description}
