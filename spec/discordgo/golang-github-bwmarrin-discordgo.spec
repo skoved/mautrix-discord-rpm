@@ -39,6 +39,7 @@ Summary:        (Golang) Go bindings for Discord
 License:        BSD-3-Clause
 URL:            %{gourl}
 Source:         %{gosource}
+Patch:          restapi.patch
 
 %description %{common_description}
 
