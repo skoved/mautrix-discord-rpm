@@ -1,0 +1,17 @@
+diff -urN discordgo-0.27.0-orig/logging.go discordgo-0.27.0/logging.go
+--- discordgo-0.27.0-orig/logging.go	2025-06-05 10:59:51.562502500 -0400
++++ discordgo-0.27.0/logging.go	2025-06-05 10:59:34.614631971 -0400
+@@ -59,7 +59,12 @@
+ 		fns := strings.Split(name, ".")
+ 		name = fns[len(fns)-1]
+ 
+-		msg := fmt.Sprintf(format, a...)
++		var msg string
++		if len(a) > 0 {
++			msg = fmt.Sprintf(format, a...)
++		} else {
++			msg = fmt.Sprint(format)
++		}
+ 
+ 		log.Printf("[DG%d] %s:%d:%s() %s\n", msgL, file, line, name, msg)
+ 	}
