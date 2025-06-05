@@ -39,6 +39,8 @@ Summary:        (Golang) Go bindings for Discord
 License:        BSD-3-Clause
 URL:            %{gourl}
 Source:         %{gosource}
+# add format string to restapi.go:299 to make go vet's printf analyzer happy during testing
+Patch:          01-fix-sprintf.patch
 
 %description %{common_description}
 
@@ -61,7 +63,6 @@ rm -r examples
 %if %{without bootstrap}
 %if %{with check}
 %check
-export GO_TEST_FLAGS="${GO_TEST_FLAGS} -vet=off"
 %gocheck
 %endif
 %endif

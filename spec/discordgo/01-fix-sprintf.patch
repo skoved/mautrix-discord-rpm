@@ -1,0 +1,12 @@
+diff -urN discordgo-0.27.0-orig/restapi.go discordgo-0.27.0/restapi.go
+--- discordgo-0.27.0-orig/restapi.go	2023-01-17 18:08:41.000000000 -0500
++++ discordgo-0.27.0/restapi.go	2025-06-05 12:09:52.735859458 -0400
+@@ -296,7 +296,7 @@
+ 		}
+ 	case http.StatusUnauthorized:
+ 		if strings.Index(s.Token, "Bot ") != 0 {
+-			s.log(LogInformational, ErrUnauthorized.Error())
++			s.log(LogInformational, "%s", ErrUnauthorized.Error())
+ 			err = ErrUnauthorized
+ 		}
+ 		fallthrough
