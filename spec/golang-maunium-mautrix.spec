@@ -14,7 +14,7 @@ A Golang Matrix framework.}
 
 %global golicenses      LICENSE
 %global godocs          example CHANGELOG.md README.md
-%global gosupfiles      {00..14}-*.sql
+%global gosupfiles      *.sql
 
 Name:           golang-maunium-mautrix-skoved
 Release:        %autorelease
